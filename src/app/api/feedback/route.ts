@@ -6,6 +6,7 @@ import { RunnableSequence } from "@langchain/core/runnables";
 import { AIMessage } from "@langchain/core/messages";
 import { NextRequest, NextResponse } from "next/server";
 import { formatDocumentsAsString } from "langchain/util/document";
+import { JsonOutputParser } from "@langchain/core/output_parsers";
 
 const model = new ChatGoogleGenerativeAI({
 	apiKey: process.env.GOOGLE_API_KEY, // Set GOOGLE_API_KEY environment variable with your key
@@ -41,11 +42,14 @@ export async function getFeedback({
 	const { history } = await memory.loadMemoryVariables({});
 	console.log(history);
 
-	const messages = history
-		.filter((msg: any) => msg._getType?.() === "human")
-		.map((msg: any) => msg.content);
+	const messages = history.filter((msg: any) => msg._getType?.() === "human");
+	const allCount = messages.length;
+	const last20 = messages.slice(-20).map((msg: any) => msg.content);
 
-	return messages;
+	return {
+		lastSentences: last20,
+		totalCount: allCount,
+	};
 }
 
 // ✅ The route handler
@@ -60,7 +64,7 @@ export async function POST(req: NextRequest) {
 			);
 		}
 
-		const humanSentences = await getFeedback({
+		const { lastSentences, totalCount } = await getFeedback({
 			sessionId,
 			langToLearn,
 			level,
@@ -68,38 +72,51 @@ export async function POST(req: NextRequest) {
 		});
 
 		const prompt = PromptTemplate.fromTemplate(`
-You are a language teacher. Check the grammar of the following learner sentences in {langToLearn} at {level} level.
-You will receive a list of sentences written by the student.
+  You are a language teacher. The student is learning {langToLearn} at {level} level.
 
-1. Give feedback in {nativeLang}.
-2. ONLY list the sentences that contain grammar or usage mistakes.
-3. For each incorrect sentence:
-   - Provide the corrected version.
-   - Briefly explain what was wrong and how to fix it.
-4. Do NOT include correct sentences.
-5. At the end, give overall feedback on common mistakes and grammatical topics the student should focus on.
+  Provide feedback in {nativeLang}.
+  Check the grammar of the following sentences. 
+  Only return those that are incorrect and for each, provide:
+  - the original sentence,
+  - the corrected sentence,
+  - a short explanation of the mistake.
 
-Here are the student sentences:
-{sentences}
-    `);
+  At the end, give:
+  - general feedback (overall impression),
+  - suggested grammar topics to review.
 
-		const chain = RunnableSequence.from([prompt, model]);
+  Respond strictly in the following JSON format:
+
+  {{
+    "mistakes": [
+      {{
+        "original": "...",
+        "correction": "...",
+        "explanation": "..."
+      }}
+    ],
+    "overallFeedback": "...",
+    "topicsToReview": ["...", "..."]
+  }}
+
+  Sentences:
+  {sentences}
+`);
+
+		const parser = new JsonOutputParser();
+		const chain = RunnableSequence.from([prompt, model, parser]);
 
 		const result = await chain.invoke({
-			sentences: humanSentences.join("\n"),
+			sentences: lastSentences.join("\n"),
 			langToLearn,
 			level,
 			nativeLang,
 		});
 
-		console.log("Grammar check input:", {
-			sentences: humanSentences.join("\n"),
-			langToLearn,
-			level,
-			nativeLang,
+		return NextResponse.json({
+			feedback: result,
+			sentenceCount: totalCount,
 		});
-
-		return NextResponse.json({ feedback: result.content });
 	} catch (err) {
 		console.error("Error in /api/feedback:", err);
 		return NextResponse.json(

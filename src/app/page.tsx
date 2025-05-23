@@ -17,8 +17,12 @@ export default function Home() {
 	>([]);
 	const [userInput, setUserInput] = useState("");
 	const sessionId = "demo-session-id"; // Later: replace with uuid or real session
-	const [feedback, setFeedback] = useState<string>("");
-
+	const [feedback, setFeedback] = useState<{
+		mistakes: { original: string; correction: string; explanation: string }[];
+		overallFeedback: string;
+		topicsToReview: string[];
+	} | null>(null);
+	const [sentenceCount, setSentenceCount] = useState<number>(0);
 	const tutorRole = roles.find((role) => role !== userRole) || "Tutor";
 	const chatEndRef = useRef<HTMLDivElement | null>(null);
 	const isFirstRender = useRef(true);
@@ -146,10 +150,11 @@ export default function Home() {
 		const data = await res.json();
 		console.log("Grammar feedback:", data.feedback);
 		setFeedback(data.feedback);
+		setSentenceCount(data.sentenceCount);
 	};
 
 	return (
-		<main className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+		<main className="mb-20 min-h-screen bg-gradient-to-b from-blue-50 to-white">
 			<div className="container mx-auto max-w-4xl px-4 py-8">
 				<h1 className="mb-8 text-center text-3xl font-bold text-gray-800">
 					AI Language Tutor
@@ -263,7 +268,7 @@ export default function Home() {
 						</div>
 					))}
 				</div>
-				<div className="mb-20 mt-10">
+				<div className="mb-10 mt-10">
 					<h2 className="mb-2 text-xl font-semibold">Chat</h2>
 					<div
 						ref={chatContainerRef}
@@ -300,6 +305,16 @@ export default function Home() {
 						</button>
 					</div>
 				</div>
+				{sentenceCount >= 20 ? (
+					<div className="mt-2 rounded bg-yellow-100 p-2 text-sm text-yellow-800">
+						You&apos;ve written {sentenceCount} sentences. You can now request
+						feedback!
+					</div>
+				) : (
+					<div className="mb-4 rounded bg-green-100 p-2 text-sm text-yellow-800">
+						Counter of your sentences: {sentenceCount}
+					</div>
+				)}
 				<div>
 					<button
 						onClick={() => fetchFeedback(sessionId)}
@@ -310,11 +325,57 @@ export default function Home() {
 					<div>
 						{feedback && (
 							<div className="mt-4 rounded border bg-gray-100 p-4">
-								<h2 className="mb-2 font-bold">Grammar Feedback</h2>
-								<p>{feedback}</p>
+								<h2 className="mb-2 text-lg font-bold">Grammar Feedback</h2>
+
+								{feedback.mistakes.length > 0 ? (
+									<div>
+										<h3 className="mb-2 font-semibold">Mistakes:</h3>
+										<ul className="list-inside list-disc space-y-2">
+											{feedback.mistakes.map((m, idx) => (
+												<li key={idx}>
+													<p>
+														<strong>Original:</strong> {m.original}
+													</p>
+													<p>
+														<strong>Correction:</strong> {m.correction}
+													</p>
+													<p>
+														<strong>Explanation:</strong> {m.explanation}
+													</p>
+												</li>
+											))}
+										</ul>
+									</div>
+								) : (
+									<p className="text-green-700">
+										No mistakes found. Well done!
+									</p>
+								)}
+
+								<div className="mt-4">
+									<h3 className="font-semibold">Overall Feedback:</h3>
+									<p>{feedback.overallFeedback}</p>
+								</div>
+
+								<div className="mt-4">
+									<h3 className="font-semibold">Topics to Review:</h3>
+									<ul className="list-inside list-disc">
+										{feedback.topicsToReview.map((topic, idx) => (
+											<li key={idx}>{topic}</li>
+										))}
+									</ul>
+								</div>
 							</div>
 						)}
 					</div>
+				</div>
+				<div>
+					<button
+						onClick={() => window.location.reload()}
+						className="mt-4 rounded bg-red-400 px-4 py-2 text-white hover:bg-red-700"
+					>
+						Start New Chat
+					</button>
 				</div>
 			</div>
 		</main>
