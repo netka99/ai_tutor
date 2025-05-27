@@ -1,29 +1,53 @@
 "use client";
 import React, { useEffect } from "react";
-import { useState, useRef } from "react";
+import { useRef } from "react";
+import { useAppStore } from "../store/useAppStore";
+
+import MainSelectors from "../components/MainSelectors";
 
 export default function Home() {
-	const [roles, setRoles] = useState<string[]>([]);
-	const [isLoading, setIsLoading] = useState(false);
-	const [description, setDescription] = useState<string>("");
-	const [userRole, setUserRole] = useState<string>("");
-	const [subject, setSubject] = useState<string>("");
-	const [nativeLang, setNativeLang] = useState<string>("polish");
-	const [langToLearn, setLangToLearn] = useState<string>("polish");
-	const [level, setLevel] = useState<string>("beginner");
-	const [phrases, setPhrases] = useState<string[]>([]);
-	const [chatMessages, setChatMessages] = useState<
-		{ sender: string; text: string }[]
-	>([]);
-	const [userInput, setUserInput] = useState("");
+	const {
+		userRole,
+		description,
+		// subject,
+		nativeLang,
+		langToLearn,
+		level,
+		phrases,
+		chatMessages,
+		userInput,
+		aiRole,
+		sentenceCount,
+		feedback,
+		setUserRole,
+		setPhrases,
+		addChatMessage,
+		setUserInput,
+		setFeedback,
+		setSentenceCount,
+		roles,
+	} = useAppStore();
+	// const [roles, setRoles] = useState<string[]>([]);
+	// const [isLoading, setIsLoading] = useState(false);
+	// const [description, setDescription] = useState<string>("");
+	// const [userRole, setUserRole] = useState<string>("");
+	// const [subject, setSubject] = useState<string>("");
+	// const [nativeLang, setNativeLang] = useState<string>("polish");
+	// const [langToLearn, setLangToLearn] = useState<string>("polish");
+	// const [level, setLevel] = useState<string>("beginner");
+	// const [phrases, setPhrases] = useState<string[]>([]);
+	// const [chatMessages, setChatMessages] = useState<
+	// 	{ sender: string; text: string }[]
+	// >([]);
+	// const [userInput, setUserInput] = useState("");
 	const sessionId = "demo-session-id"; // Later: replace with uuid or real session
-	const [feedback, setFeedback] = useState<{
-		mistakes: { original: string; correction: string; explanation: string }[];
-		overallFeedback: string;
-		topicsToReview: string[];
-	} | null>(null);
-	const [sentenceCount, setSentenceCount] = useState<number>(0);
-	const tutorRole = roles.find((role) => role !== userRole) || "Tutor";
+	// const [feedback, setFeedback] = useState<{
+	// 	mistakes: { original: string; correction: string; explanation: string }[];
+	// 	overallFeedback: string;
+	// 	topicsToReview: string[];
+	// } | null>(null);
+	// const [sentenceCount, setSentenceCount] = useState<number>(0);
+	// const tutorRole = roles.find((role) => role !== userRole) || "Tutor";
 	const chatEndRef = useRef<HTMLDivElement | null>(null);
 	const isFirstRender = useRef(true);
 	const chatContainerRef = useRef<HTMLDivElement | null>(null);
@@ -45,31 +69,31 @@ export default function Home() {
 		}
 	}, [chatMessages]);
 
-	const getDescriptionRole = async (e: React.FormEvent) => {
-		e.preventDefault();
-		setIsLoading(true);
+	// const getDescriptionRole = async (e: React.FormEvent) => {
+	// 	e.preventDefault();
+	// 	setIsLoading(true);
 
-		const formData = new FormData(e.target as HTMLFormElement);
-		const subject = formData.get("subject")?.toString();
-		const nativeLang = formData.get("nativeLang")?.toString();
-		const langToLearn = formData.get("langToLearn")?.toString();
-		const level = formData.get("level")?.toString();
+	// 	const formData = new FormData(e.target as HTMLFormElement);
+	// 	const subject = formData.get("subject")?.toString();
+	// 	const nativeLang = formData.get("nativeLang")?.toString();
+	// 	const langToLearn = formData.get("langToLearn")?.toString();
+	// 	const level = formData.get("level")?.toString();
 
-		const response = await fetch("/api/subject", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ subject, langToLearn, level }),
-		});
+	// 	const response = await fetch("/api/subject", {
+	// 		method: "POST",
+	// 		headers: {
+	// 			"Content-Type": "application/json",
+	// 		},
+	// 		body: JSON.stringify({ subject, langToLearn, level }),
+	// 	});
 
-		const data = await response.json();
+	// 	const data = await response.json();
 
-		console.log(data);
-		setDescription(data.description);
-		setRoles(data.roles);
-		setIsLoading(false);
-	};
+	// 	console.log(data);
+	// 	setDescription(data.description);
+	// 	setRoles(data.roles);
+	// 	setIsLoading(false);
+	// };
 
 	const generatePhrases = async (
 		role: string,
@@ -100,7 +124,7 @@ export default function Home() {
 		if (!userInput.trim()) return;
 
 		const newMessage = { sender: "user", text: userInput };
-		setChatMessages((prev) => [...prev, newMessage]);
+		addChatMessage(newMessage);
 		setUserInput("");
 
 		try {
@@ -124,7 +148,7 @@ export default function Home() {
 
 			if (res.ok) {
 				const aiMessage = { sender: "tutor", text: data.reply };
-				setChatMessages((prev) => [...prev, aiMessage]);
+				addChatMessage(aiMessage);
 			} else {
 				console.error("API error", data);
 			}
@@ -159,7 +183,8 @@ export default function Home() {
 				<h1 className="mb-8 text-center text-3xl font-bold text-gray-800">
 					AI Language Tutor
 				</h1>
-				<form onSubmit={getDescriptionRole} className="mb-4">
+				<MainSelectors />
+				{/* <form onSubmit={getDescriptionRole} className="mb-4">
 					<div className="flex justify-between">
 						<div>
 							<label className="mb-2 block">Your Native Language:</label>
@@ -241,7 +266,7 @@ export default function Home() {
 					>
 						{isLoading ? "Generating..." : "Ask AI Tutor"}
 					</button>
-				</form>
+				</form> */}
 				<div className="mb-6 rounded-lg bg-blue-100 px-6 py-4 text-gray-800 shadow-md">
 					{description}
 				</div>
@@ -283,7 +308,7 @@ export default function Home() {
 										: "text-left text-green-800"
 								}`}
 							>
-								<strong>{msg.sender === "user" ? userRole : tutorRole}</strong>:{" "}
+								<strong>{msg.sender === "user" ? userRole : aiRole}</strong>:{" "}
 								{msg.text}
 							</div>
 						))}
