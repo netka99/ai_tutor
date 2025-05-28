@@ -56,8 +56,11 @@ export default function MainSelectors() {
 		<form onSubmit={getDescriptionRole} className="mb-4">
 			<div className="flex justify-between">
 				<div>
-					<label className="mb-2 block">Your Native Language:</label>
+					<label htmlFor="nativeLang" className="mb-2 block">
+						Your Native Language:
+					</label>
 					<select
+						id="nativeLang"
 						name="nativeLang"
 						value={nativeLang}
 						onChange={(e) => setNativeLang(e.target.value)}
@@ -69,8 +72,11 @@ export default function MainSelectors() {
 					</select>
 				</div>
 				<div>
-					<label className="mb-2 block">Language to learn:</label>
+					<label htmlFor="langToLearn" className="mb-2 block">
+						Language to learn:
+					</label>
 					<select
+						id="langToLearn"
 						name="langToLearn"
 						value={langToLearn}
 						onChange={(e) => setLangToLearn(e.target.value)}
@@ -82,8 +88,11 @@ export default function MainSelectors() {
 					</select>
 				</div>
 				<div>
-					<label className="mb-2 block">Choose your level:</label>
+					<label htmlFor="level" className="mb-2 block">
+						Choose your level:
+					</label>
 					<select
+						id="level"
 						name="level"
 						value={level}
 						onChange={(e) => setLevel(e.target.value)}
@@ -97,8 +106,11 @@ export default function MainSelectors() {
 			</div>
 			<div className="flex justify-between">
 				<div>
-					<label className="mb-2 block">Choose subject:</label>
+					<label htmlFor="subject" className="mb-2 block">
+						Choose subject:
+					</label>
 					<select
+						id="subject"
 						name="subject"
 						value={subject}
 						onChange={(e) => setSubject(e.target.value)}
