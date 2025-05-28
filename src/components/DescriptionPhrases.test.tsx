@@ -1,6 +1,5 @@
 import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import DescriptionPhrases from "./DescriptionPhrases";
-// import userEvent from "@testing-library/user-event";
 import { useAppStore } from "../store/useAppStore";
 
 jest.mock("../store/useAppStore", () => ({
