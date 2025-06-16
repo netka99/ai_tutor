@@ -21,22 +21,26 @@ export default function DescriptionPhrases() {
 		level: string,
 	) => {
 		setUserRole(role);
-		console.log(role);
-		const response = await fetch("/api/phrases", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify({ role, description, langToLearn, level }),
-		});
-		if (!response.ok) {
-			console.error("Failed to send role to backend");
-			return;
-		}
+		try {
+			const response = await fetch("/api/phrases", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ role, description, langToLearn, level }),
+			});
 
-		const data = await response.json();
-		setPhrases(data.phrases);
-		console.log(data.phrases);
+			if (!response.ok) {
+				throw new Error("Failed to generate phrases");
+			}
+
+			const data = await response.json();
+			setPhrases(data.phrases);
+		} catch (error) {
+			// You might want to add proper error handling here
+			// For example, setting an error state or showing a toast notification
+			console.error("Error generating phrases:", error);
+		}
 	};
 
 	return (

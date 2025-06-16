@@ -16,6 +16,8 @@ export default function ChatInterface() {
 		setUserInput,
 		description,
 		aiRole,
+		setSentenceCount,
+		sentenceCount,
 	} = useAppStore();
 
 	const chatEndRef = useRef<HTMLDivElement | null>(null);
@@ -69,6 +71,7 @@ export default function ChatInterface() {
 			if (res.ok) {
 				const aiMessage = { sender: "tutor", text: data.reply };
 				addChatMessage(aiMessage);
+				setSentenceCount(data.sentenceCount);
 			} else {
 				console.error("API error", data);
 			}
@@ -114,6 +117,16 @@ export default function ChatInterface() {
 					Send
 				</button>
 			</div>
+			{sentenceCount >= 20 ? (
+				<div className="mt-2 rounded bg-yellow-100 p-2 text-sm text-yellow-800">
+					You&apos;ve written {sentenceCount} sentences. You can now request
+					feedback!
+				</div>
+			) : (
+				<div className="mb-4 rounded bg-green-100 p-2 text-sm text-yellow-800">
+					Counter of your sentences: {sentenceCount}
+				</div>
+			)}
 		</div>
 	);
 }
