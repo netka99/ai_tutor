@@ -1,12 +1,3 @@
-// // components/TTSButton.tsx
-// import { useSpeechStore } from "@/store/speechStore";
-
-// export function TTSButton() {
-// 	const speak = useSpeechStore((s) => s.speak);
-// 	return <button onClick={speak}>🔈 Speak Response</button>;
-// }
-
-// components/TTSButton.tsx
 import { useSpeechStore } from "@/store/speechStore";
 import { Volume2 } from "lucide-react";
 

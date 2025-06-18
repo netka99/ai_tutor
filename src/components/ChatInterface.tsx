@@ -1,8 +1,8 @@
 "use client";
 import React from "react";
 import { useEffect } from "react";
-import { useRef } from "react";
 import { useAppStore } from "../store/useAppStore";
+import { useSpeechStore } from "../store/speechStore";
 import { STTButton } from "./STTButton";
 import { TTSButton } from "./TTSButton";
 
@@ -21,28 +21,19 @@ export default function ChatInterface() {
 		setSentenceCount,
 		sentenceCount,
 	} = useAppStore();
-
-	const chatEndRef = useRef<HTMLDivElement | null>(null);
-	const isFirstRender = useRef(true);
-	const chatContainerRef = useRef<HTMLDivElement | null>(null);
+	const speakText = useSpeechStore((s) => s.speakText);
 	const sessionId = "demo-session-id";
 
 	useEffect(() => {
-		if (isFirstRender.current) {
-			isFirstRender.current = false;
-			return;
-		}
-		const container = chatContainerRef.current;
+		if (chatMessages.length === 0) return;
 
-		if (!container || !chatEndRef.current) return;
+		const lastMsg = chatMessages[chatMessages.length - 1];
 
-		const scrollThreshold = 100;
-		const distanceFromBottom =
-			container.scrollHeight - container.scrollTop - container.clientHeight;
-		if (distanceFromBottom < scrollThreshold) {
-			chatEndRef.current.scrollIntoView({ behavior: "smooth" });
+		if (lastMsg.sender !== "user") {
+			speakText(lastMsg.text);
+			console.log(lastMsg, lastMsg.sender);
 		}
-	}, [chatMessages]);
+	}, [chatMessages, speakText]);
 
 	const sendMessageToTutor = async () => {
 		if (!userInput.trim()) return;
@@ -85,25 +76,25 @@ export default function ChatInterface() {
 	return (
 		<div className="mb-10 mt-10">
 			<h2 className="mb-2 text-xl font-semibold">Chat</h2>
-			<div
-				ref={chatContainerRef}
-				className="mb-4 h-64 overflow-y-auto rounded-lg bg-gray-100 p-4 shadow-inner"
-			>
-				{chatMessages.map((msg, i) => (
-					<div
-						key={i}
-						className={`mb-2 ${
-							msg.sender === "user"
-								? "text-right text-blue-800"
-								: "text-left text-green-800"
-						}`}
-					>
-						<strong>{msg.sender === "user" ? userRole : aiRole}</strong>:{" "}
-						{msg.text}
-						{msg.sender !== "user" && <TTSButton text={msg.text} />}
-					</div>
-				))}
-				<div ref={chatEndRef} />
+			<div className="flex h-64 flex-col-reverse overflow-auto rounded-lg bg-gray-100 p-8 shadow-inner [overflow-anchor:auto]">
+				{chatMessages
+					.slice()
+					.reverse()
+					.map((msg, i) => (
+						<div
+							key={i}
+							className={`mb-2 [transform:translateZ(0)] ${
+								msg.sender === "user"
+									? "text-right text-blue-800"
+									: "text-left text-green-800"
+							}`}
+						>
+							<strong>{msg.sender === "user" ? userRole : aiRole}</strong>:{" "}
+							{msg.text}
+							{msg.sender !== "user" && <TTSButton text={msg.text} />}{" "}
+						</div>
+					))}
+				<div className="mt-auto"></div>
 			</div>
 			<div className="flex gap-2">
 				<input
