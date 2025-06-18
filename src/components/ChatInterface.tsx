@@ -3,6 +3,8 @@ import React from "react";
 import { useEffect } from "react";
 import { useRef } from "react";
 import { useAppStore } from "../store/useAppStore";
+import { STTButton } from "./STTButton";
+import { TTSButton } from "./TTSButton";
 
 export default function ChatInterface() {
 	const {
@@ -98,6 +100,7 @@ export default function ChatInterface() {
 					>
 						<strong>{msg.sender === "user" ? userRole : aiRole}</strong>:{" "}
 						{msg.text}
+						{msg.sender !== "user" && <TTSButton text={msg.text} />}
 					</div>
 				))}
 				<div ref={chatEndRef} />
@@ -110,6 +113,7 @@ export default function ChatInterface() {
 					placeholder="Type your message..."
 					className="flex-1 rounded border p-2"
 				/>
+				<STTButton />
 				<button
 					onClick={sendMessageToTutor}
 					className="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
