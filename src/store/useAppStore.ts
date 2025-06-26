@@ -26,6 +26,7 @@ interface AppState {
 	aiRole: string;
 	sentenceCount: number;
 	roles: string[];
+	ttsLangCode: string;
 
 	setUserRole: (role: string) => void;
 	setDescription: (descript: string) => void;
@@ -40,6 +41,7 @@ interface AppState {
 	setAiRole: (aiRole: string) => void;
 	setSentenceCount: (sentenceCount: number) => void;
 	setRoles: (roles: string[]) => void;
+	setTtsLangCode: (ttsLangCode: string) => void;
 }
 
 export const useAppStore = create<AppState>()(
@@ -56,6 +58,7 @@ export const useAppStore = create<AppState>()(
 		aiRole: "",
 		sentenceCount: 0,
 		roles: [],
+		ttsLangCode: "en-US",
 
 		feedback: {
 			mistakes: [],
@@ -76,5 +79,6 @@ export const useAppStore = create<AppState>()(
 		setAiRole: (aiRole) => set({ aiRole }),
 		setSentenceCount: (sentenceCount) => set({ sentenceCount }),
 		setRoles: (roles) => set({ roles }),
+		setTtsLangCode: (ttsLangCode) => set({ ttsLangCode }),
 	})),
 );

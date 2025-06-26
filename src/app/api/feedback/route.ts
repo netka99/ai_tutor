@@ -30,7 +30,7 @@ export async function POST(req: NextRequest) {
   You are a language teacher. The student is learning {langToLearn} at {level} level.
 
   Provide feedback in {nativeLang}.
-  Check the grammar of the following sentences. 
+  Check the grammar of the following sentences, awoid checking punctuation. 
   Only return those that are incorrect and for each, provide:
   - the original sentence,
   - the corrected sentence,

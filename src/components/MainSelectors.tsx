@@ -2,6 +2,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useAppStore } from "../store/useAppStore";
+import { languagesToLearn } from "../lib/formOptions";
+import { useTranslations } from "next-intl";
 
 export default function MainSelectors() {
 	const [isLoading, setIsLoading] = useState(false);
@@ -22,11 +24,30 @@ export default function MainSelectors() {
 		setAiRole,
 		roles,
 		setRoles,
+		ttsLangCode,
+		setTtsLangCode,
 	} = useAppStore();
+
+	const t = useTranslations("form");
 
 	useEffect(() => {
 		setAiRole(roles.find((role) => role !== userRole) || "Tutor");
 	}, [roles, userRole, setAiRole]);
+
+	const handleLangtoChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		const selectedValue = e.target.value;
+		setLangToLearn(selectedValue);
+
+		const selectedLangOption = languagesToLearn.find(
+			(lang) => lang.value === selectedValue,
+		);
+
+		if (selectedLangOption?.ttsCode) {
+			setTtsLangCode(selectedLangOption.ttsCode);
+		} else {
+			setTtsLangCode("en-US");
+		}
+	};
 
 	const getDescriptionRole = async (e: React.FormEvent) => {
 		e.preventDefault();
@@ -79,12 +100,16 @@ export default function MainSelectors() {
 						id="langToLearn"
 						name="langToLearn"
 						value={langToLearn}
-						onChange={(e) => setLangToLearn(e.target.value)}
+						onChange={handleLangtoChange}
 						className="mb-6 rounded-lg bg-white p-6 shadow-lg"
 					>
-						<option value="polish">Polish</option>
-						<option value="english">English</option>
-						<option value="italian">Italian</option>
+						{languagesToLearn.map((option) => {
+							return (
+								<option key={option.value} value={option.value}>
+									{t(option.labelKey)}
+								</option>
+							);
+						})}
 					</select>
 				</div>
 				<div>

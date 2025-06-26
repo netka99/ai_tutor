@@ -21,7 +21,7 @@ export default function ChatInterface() {
 		setSentenceCount,
 		sentenceCount,
 	} = useAppStore();
-	const speakText = useSpeechStore((s) => s.speakText);
+	const { speakText, isAutoSpeak, toggleAutoSpeach } = useSpeechStore();
 	const sessionId = "demo-session-id";
 
 	useEffect(() => {
@@ -76,6 +76,15 @@ export default function ChatInterface() {
 	return (
 		<div className="mb-10 mt-10">
 			<h2 className="mb-2 text-xl font-semibold">Chat</h2>
+			<div className="mb-4 flex justify-end">
+				<button
+					onClick={toggleAutoSpeach}
+					className="mb-4 rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-800"
+				>
+					{isAutoSpeak ? "🔊" : "🔇"}
+				</button>
+			</div>
+
 			<div className="flex h-64 flex-col-reverse overflow-auto rounded-lg bg-gray-100 p-8 shadow-inner [overflow-anchor:auto]">
 				{chatMessages
 					.slice()

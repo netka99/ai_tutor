@@ -1,34 +1,10 @@
-"use client";
-import React from "react";
-import "./globals.css";
+// src/app/page.tsx
 
-import MainSelectors from "../components/MainSelectors";
-import DescriptionPhrases from "../components/DescriptionPhrases";
-import ChatInterface from "../components/ChatInterface";
-import Feedback from "../components/Feedback";
-import AudioRecorder from "../components/AudioRecorder";
+import { redirect } from "next/navigation";
 
-export default function Home() {
-	return (
-		<main className="mb-20 min-h-screen bg-gradient-to-b from-blue-50 to-white">
-			<div className="container mx-auto max-w-4xl px-4 py-8">
-				<h1 className="mb-8 text-center text-3xl font-bold text-gray-800">
-					AI Language Tutor
-				</h1>
-				<MainSelectors />
-				<DescriptionPhrases />
-				<ChatInterface />
-				<Feedback />
-				<AudioRecorder />
-				<div>
-					<button
-						onClick={() => window.location.reload()}
-						className="mt-4 rounded bg-red-400 px-4 py-2 text-white hover:bg-red-700"
-					>
-						Start New Chat
-					</button>
-				</div>
-			</div>
-		</main>
-	);
+export default function RootPage() {
+	// Redirect to a default locale, for example, English.
+	// You could also implement logic here to detect the user's preferred browser language
+	// and redirect to that locale if it's supported.
+	redirect("/en"); // Redirects to /en/ (which will then load src/app/[locale]/page.tsx for 'en')
 }

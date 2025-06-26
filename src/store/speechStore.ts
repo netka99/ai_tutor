@@ -9,10 +9,13 @@ type SpeechStore = {
 	setOutputText: (text: string) => void;
 
 	speak: () => void;
-	speakText: (text: string) => void;
+	speakText: (text: string, langCode?: string) => void;
+
+	isAutoSpeak: boolean;
+	toggleAutoSpeach: () => void;
 };
 
-async function runTTS(text: string) {
+async function runTTS(text: string, langCode?: string) {
 	if (!text) return;
 
 	// Wait for voices to load (max 1 second)
@@ -29,10 +32,22 @@ async function runTTS(text: string) {
 		}
 	});
 
-	const voice = voices.find((v) => v.name.includes("Google US English"));
+	let voice: SpeechSynthesisVoice | undefined;
+
+	if (langCode) {
+		voice = voices.find((v) => v.lang === langCode);
+		console.log(`Attempting to find voice for ${langCode}:`, voice);
+	}
+	if (!voice) {
+		voice = voices.find((v) => v.name.includes("Google US English"));
+	}
+	if (!voice && voices.length > 0) {
+		voice = voices[0];
+		console.log("Falling back to first available voice:", voice); // For debugging
+	}
 
 	const utterance = new SpeechSynthesisUtterance(text);
-	utterance.lang = "en-US";
+	utterance.lang = langCode || "en-US";
 	if (voice) utterance.voice = voice;
 
 	utterance.onerror = (e) => {
@@ -64,7 +79,10 @@ export const useSpeechStore = create<SpeechStore>((set, get) => ({
 		runTTS(text);
 	},
 
-	speakText: (text) => {
-		runTTS(text);
+	speakText: (text, langCode) => {
+		runTTS(text, langCode);
 	},
+
+	isAutoSpeak: true,
+	toggleAutoSpeach: () => set((state) => ({ isAutoSpeak: !state.isAutoSpeak })),
 }));
