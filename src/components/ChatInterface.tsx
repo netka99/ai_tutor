@@ -20,6 +20,7 @@ export default function ChatInterface() {
 		aiRole,
 		setSentenceCount,
 		sentenceCount,
+		ttsLangCode,
 	} = useAppStore();
 	const { speakText, isAutoSpeak, toggleAutoSpeach } = useSpeechStore();
 	const sessionId = "demo-session-id";
@@ -30,10 +31,10 @@ export default function ChatInterface() {
 		const lastMsg = chatMessages[chatMessages.length - 1];
 
 		if (lastMsg.sender !== "user") {
-			speakText(lastMsg.text);
+			speakText(lastMsg.text, ttsLangCode);
 			console.log(lastMsg, lastMsg.sender);
 		}
-	}, [chatMessages, speakText]);
+	}, [chatMessages, speakText, ttsLangCode]);
 
 	const sendMessageToTutor = async () => {
 		if (!userInput.trim()) return;

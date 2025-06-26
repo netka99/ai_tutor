@@ -6,6 +6,7 @@ export function useSpeechRecognition() {
 	const recognitionRef = useRef<any>(null);
 	const setInputText = useSpeechStore((s) => s.setInputText);
 	const setUserInput = useAppStore((s) => s.setUserInput); // 👈 sync with app input
+	const { ttsLangCode } = useAppStore();
 
 	useEffect(() => {
 		const SpeechRecognition =
@@ -17,7 +18,7 @@ export function useSpeechRecognition() {
 		}
 
 		const recognition = new SpeechRecognition();
-		recognition.lang = "en-US";
+		recognition.lang = ttsLangCode;
 		recognition.interimResults = false;
 		recognition.maxAlternatives = 1;
 
@@ -33,7 +34,7 @@ export function useSpeechRecognition() {
 		};
 
 		recognitionRef.current = recognition;
-	}, [setInputText, setUserInput]);
+	}, [setInputText, setUserInput, ttsLangCode]);
 
 	const startListening = () => {
 		recognitionRef.current?.start();

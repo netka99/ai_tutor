@@ -1,4 +1,5 @@
 import { useSpeechStore } from "@/store/speechStore";
+import { useAppStore } from "@/store/useAppStore";
 import { Volume2 } from "lucide-react";
 
 type Props = {
@@ -8,10 +9,11 @@ type Props = {
 export function TTSButton({ text }: Props) {
 	const setOutputText = useSpeechStore((s) => s.setOutputText);
 	const speak = useSpeechStore((s) => s.speak);
+	const ttsLangCode = useAppStore((s) => s.ttsLangCode);
 
 	const handleClick = () => {
 		setOutputText(text);
-		speak();
+		speak(ttsLangCode);
 	};
 
 	return (

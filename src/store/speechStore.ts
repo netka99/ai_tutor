@@ -8,7 +8,7 @@ type SpeechStore = {
 	outputText: string; // AI response to be spoken
 	setOutputText: (text: string) => void;
 
-	speak: () => void;
+	speak: (langCode?: string) => void;
 	speakText: (text: string, langCode?: string) => void;
 
 	isAutoSpeak: boolean;
@@ -31,6 +31,7 @@ async function runTTS(text: string, langCode?: string) {
 			};
 		}
 	});
+	console.log("🗣 Available voices:", voices);
 
 	let voice: SpeechSynthesisVoice | undefined;
 
@@ -74,9 +75,9 @@ export const useSpeechStore = create<SpeechStore>((set, get) => ({
 	outputText: "",
 	setOutputText: (text) => set({ outputText: text }),
 
-	speak: () => {
+	speak: (langCode?: string) => {
 		const text = get().outputText;
-		runTTS(text);
+		runTTS(text, langCode);
 	},
 
 	speakText: (text, langCode) => {
