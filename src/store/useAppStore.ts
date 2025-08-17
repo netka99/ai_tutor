@@ -49,7 +49,7 @@ export const useAppStore = create<AppState>()(
 		userRole: "",
 		description: "",
 		subject: "",
-		nativeLang: "polish",
+		nativeLang: "english",
 		langToLearn: "polish",
 		level: "beginner",
 		phrases: [],

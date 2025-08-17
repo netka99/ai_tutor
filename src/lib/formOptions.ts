@@ -3,14 +3,40 @@ interface SelectOption {
 	labelKey: string;
 	ttsCode?: string;
 	description?: string;
+	localeCode?: string;
 }
 
 export const nativeLanguages: SelectOption[] = [
-	{ value: "polish", labelKey: "form.language.polish", ttsCode: "pl-PL" },
-	{ value: "english", labelKey: "form.language.english", ttsCode: "en-US" },
-	{ value: "italian", labelKey: "form.language.italian", ttsCode: "it-IT" },
-	{ value: "french", labelKey: "form.language.french", ttsCode: "fr-FR" },
-	{ value: "german", labelKey: "form.language.german", ttsCode: "de-DE" },
+	{
+		value: "polish",
+		labelKey: "form.language.polish",
+		ttsCode: "pl-PL",
+		localeCode: "pl",
+	},
+	{
+		value: "english",
+		labelKey: "form.language.english",
+		ttsCode: "en-US",
+		localeCode: "en",
+	},
+	{
+		value: "italian",
+		labelKey: "form.language.italian",
+		ttsCode: "it-IT",
+		localeCode: "it",
+	},
+	{
+		value: "french",
+		labelKey: "form.language.french",
+		ttsCode: "fr-FR",
+		localeCode: "fr",
+	},
+	{
+		value: "german",
+		labelKey: "form.language.german",
+		ttsCode: "de-DE",
+		localeCode: "de",
+	},
 ];
 
 export const languagesToLearn: SelectOption[] = [

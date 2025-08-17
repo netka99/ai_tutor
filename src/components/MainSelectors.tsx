@@ -9,11 +9,14 @@ import {
 	subjects,
 } from "../lib/formOptions";
 import { useTranslations } from "next-intl";
+import { useRouter, usePathname } from "next/navigation";
 
 export default function MainSelectors() {
 	const [isLoading, setIsLoading] = useState(false);
 	// const [roles, setRoles] = useState<string[]>([]);
 	const [customerSubject, setCustomSubject] = useState<string>("");
+	const router = useRouter();
+	const pathname = usePathname();
 
 	const {
 		setDescription,
@@ -38,6 +41,28 @@ export default function MainSelectors() {
 	useEffect(() => {
 		setAiRole(roles.find((role) => role !== userRole) || "Tutor");
 	}, [roles, userRole, setAiRole]);
+
+	const handleNativeLang = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		const selectedLang = e.target.value;
+		setNativeLang(selectedLang);
+
+		const selectedLangOption = nativeLanguages.find(
+			(lang) => lang.value === selectedLang,
+		);
+		let currentCode = "en";
+
+		if (selectedLangOption?.localeCode) {
+			currentCode = selectedLangOption.localeCode;
+		}
+
+		const pathParts = pathname.split("/");
+		const currentLocale = pathParts[1];
+		const newPath = pathname.replace(
+			`/${currentLocale}`,
+			`/${currentCode}`,
+		);
+		router.push(newPath);
+	};
 
 	const handleLangtoChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		const selectedValue = e.target.value;
@@ -89,7 +114,7 @@ export default function MainSelectors() {
 						id="nativeLang"
 						name="nativeLang"
 						value={nativeLang}
-						onChange={(e) => setNativeLang(e.target.value)}
+						onChange={handleNativeLang}
 						className="mb-6 rounded-lg bg-white p-6 shadow-lg"
 					>
 						{nativeLanguages.map((option) => (
