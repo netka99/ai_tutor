@@ -71,7 +71,9 @@ describe("ChatInterface", () => {
 		});
 		render(<ChatInterface />);
 		expect(
-			screen.getByText((_, node) => node?.textContent === "waiter: Hello"),
+			screen.getByText(
+				(_, node) => node?.textContent === "waiter: Hello",
+			),
 		).toBeInTheDocument();
 		expect(
 			screen.getByText(

@@ -1,147 +1,149 @@
-import React, { useState, useEffect, useRef } from "react";
+//Component used for testing speech recognition and synthesis
 
-export default function SpeechDemo() {
-	const [text, setText] = useState("");
-	const recognitionRef = useRef<any>(null);
-	const voicesRef = useRef<SpeechSynthesisVoice[]>([]);
+// import React, { useState, useEffect, useRef } from "react";
 
-	// Load and store available voices
-	useEffect(() => {
-		const loadVoices = () => {
-			const voices = window.speechSynthesis.getVoices();
-			voicesRef.current = voices;
-			console.log("Loaded voices:", voices);
-		};
+// export default function SpeechDemo() {
+// 	const [text, setText] = useState("");
+// 	const recognitionRef = useRef<any>(null);
+// 	const voicesRef = useRef<SpeechSynthesisVoice[]>([]);
 
-		loadVoices();
+// 	// Load and store available voices
+// 	useEffect(() => {
+// 		const loadVoices = () => {
+// 			const voices = window.speechSynthesis.getVoices();
+// 			voicesRef.current = voices;
+// 			console.log("Loaded voices:", voices);
+// 		};
 
-		if (window.speechSynthesis.onvoiceschanged !== undefined) {
-			window.speechSynthesis.onvoiceschanged = () => {
-				console.log("🔁 Voices changed from event");
-				loadVoices();
-			};
-		}
-	}, []);
+// 		loadVoices();
 
-	// Setup speech recognition
-	useEffect(() => {
-		const SpeechRecognition =
-			(window as any).SpeechRecognition ||
-			(window as any).webkitSpeechRecognition;
-		if (!SpeechRecognition) {
-			alert("Speech recognition not supported in this browser.");
-			return;
-		}
-		const recognition = new SpeechRecognition();
-		recognition.lang = "en-US";
-		recognition.interimResults = false;
-		recognition.maxAlternatives = 1;
+// 		if (window.speechSynthesis.onvoiceschanged !== undefined) {
+// 			window.speechSynthesis.onvoiceschanged = () => {
+// 				console.log("🔁 Voices changed from event");
+// 				loadVoices();
+// 			};
+// 		}
+// 	}, []);
 
-		recognition.onresult = (event: any) => {
-			setText(event.results[0][0].transcript);
-		};
+// 	// Setup speech recognition
+// 	useEffect(() => {
+// 		const SpeechRecognition =
+// 			(window as any).SpeechRecognition ||
+// 			(window as any).webkitSpeechRecognition;
+// 		if (!SpeechRecognition) {
+// 			alert("Speech recognition not supported in this browser.");
+// 			return;
+// 		}
+// 		const recognition = new SpeechRecognition();
+// 		recognition.lang = "en-US";
+// 		recognition.interimResults = false;
+// 		recognition.maxAlternatives = 1;
 
-		recognition.onerror = (event: any) => {
-			console.error("❌ Speech recognition error", event.error);
-		};
+// 		recognition.onresult = (event: any) => {
+// 			setText(event.results[0][0].transcript);
+// 		};
 
-		recognitionRef.current = recognition;
-	}, []);
+// 		recognition.onerror = (event: any) => {
+// 			console.error("❌ Speech recognition error", event.error);
+// 		};
 
-	const startListening = () => {
-		recognitionRef.current?.start();
-	};
+// 		recognitionRef.current = recognition;
+// 	}, []);
 
-	// Unlock Chrome TTS (audio context) with a dummy utterance
-	const unlockAudio = () => {
-		const dummy = new SpeechSynthesisUtterance(" ");
-		dummy.volume = 0;
-		dummy.rate = 10;
-		window.speechSynthesis.speak(dummy);
-	};
+// 	const startListening = () => {
+// 		recognitionRef.current?.start();
+// 	};
 
-	// Speak the current text
-	const speak = () => {
-		if (!window.speechSynthesis) {
-			alert("TTS not supported.");
-			return;
-		}
-		if (!text.trim()) {
-			alert("Please enter or recognize some text first.");
-			return;
-		}
+// 	// Unlock Chrome TTS (audio context) with a dummy utterance
+// 	const unlockAudio = () => {
+// 		const dummy = new SpeechSynthesisUtterance(" ");
+// 		dummy.volume = 0;
+// 		dummy.rate = 10;
+// 		window.speechSynthesis.speak(dummy);
+// 	};
 
-		console.log("🎤 Speaking now...");
-		unlockAudio();
-		window.speechSynthesis.cancel();
+// 	// Speak the current text
+// 	const speak = () => {
+// 		if (!window.speechSynthesis) {
+// 			alert("TTS not supported.");
+// 			return;
+// 		}
+// 		if (!text.trim()) {
+// 			alert("Please enter or recognize some text first.");
+// 			return;
+// 		}
 
-		const utterance = new SpeechSynthesisUtterance(text);
-		utterance.lang = "en-US";
+// 		console.log("🎤 Speaking now...");
+// 		unlockAudio();
+// 		window.speechSynthesis.cancel();
 
-		// Try to pick a reliable voice
-		const voice = voicesRef.current.find((v) =>
-			v.name.includes("Google US English"),
-		);
-		if (voice) utterance.voice = voice;
+// 		const utterance = new SpeechSynthesisUtterance(text);
+// 		utterance.lang = "en-US";
 
-		utterance.onstart = () => console.log("🔊 TTS started");
-		utterance.onend = () => console.log("✅ TTS ended");
-		utterance.onerror = (e) => console.error("❌ TTS error:", e.error);
+// 		// Try to pick a reliable voice
+// 		const voice = voicesRef.current.find((v) =>
+// 			v.name.includes("Google US English"),
+// 		);
+// 		if (voice) utterance.voice = voice;
 
-		// Slight delay after unlock
-		setTimeout(() => {
-			window.speechSynthesis.speak(utterance);
-		}, 150);
-	};
+// 		utterance.onstart = () => console.log("🔊 TTS started");
+// 		utterance.onend = () => console.log("✅ TTS ended");
+// 		utterance.onerror = (e) => console.error("❌ TTS error:", e.error);
 
-	// 🔬 Test TTS output with a known phrase
-	const testSpeechOutput = () => {
-		if (!window.speechSynthesis) {
-			alert("TTS not supported.");
-			return;
-		}
-		console.log("🔁 Testing speech...");
+// 		// Slight delay after unlock
+// 		setTimeout(() => {
+// 			window.speechSynthesis.speak(utterance);
+// 		}, 150);
+// 	};
 
-		unlockAudio();
-		window.speechSynthesis.cancel();
+// 	// 🔬 Test TTS output with a known phrase
+// 	const testSpeechOutput = () => {
+// 		if (!window.speechSynthesis) {
+// 			alert("TTS not supported.");
+// 			return;
+// 		}
+// 		console.log("🔁 Testing speech...");
 
-		const testUtterance = new SpeechSynthesisUtterance(
-			"This is a test of the speech output. If you hear this, TTS is working.",
-		);
-		testUtterance.lang = "en-US";
+// 		unlockAudio();
+// 		window.speechSynthesis.cancel();
 
-		// Optional: force specific voice
-		const voice = voicesRef.current.find((v) =>
-			v.name.includes("Google US English"),
-		);
-		if (voice) testUtterance.voice = voice;
+// 		const testUtterance = new SpeechSynthesisUtterance(
+// 			"This is a test of the speech output. If you hear this, TTS is working.",
+// 		);
+// 		testUtterance.lang = "en-US";
 
-		testUtterance.onstart = () => console.log("🔊 Test TTS started");
-		testUtterance.onend = () => console.log("✅ Test TTS ended");
-		testUtterance.onerror = (e) => console.error("❌ Test TTS error:", e.error);
+// 		// Optional: force specific voice
+// 		const voice = voicesRef.current.find((v) =>
+// 			v.name.includes("Google US English"),
+// 		);
+// 		if (voice) testUtterance.voice = voice;
 
-		setTimeout(() => {
-			window.speechSynthesis.speak(testUtterance);
-		}, 150);
-	};
+// 		testUtterance.onstart = () => console.log("🔊 Test TTS started");
+// 		testUtterance.onend = () => console.log("✅ Test TTS ended");
+// 		testUtterance.onerror = (e) => console.error("❌ Test TTS error:", e.error);
 
-	return (
-		<div>
-			<h3>Speech Recognition (STT) & Text-to-Speech (TTS) Demo</h3>
-			<button onClick={startListening}>🎙 Start Speech Recognition</button>
-			<textarea
-				rows={5}
-				cols={40}
-				value={text}
-				onChange={(e) => setText(e.target.value)}
-				placeholder="Recognized or typed text"
-			/>
-			<br />
-			<button onClick={speak} disabled={!text.trim()}>
-				🔈 Speak Text (TTS)
-			</button>
-			<br />
-			<button onClick={testSpeechOutput}>🧪 Test TTS Output</button>
-		</div>
-	);
-}
+// 		setTimeout(() => {
+// 			window.speechSynthesis.speak(testUtterance);
+// 		}, 150);
+// 	};
+
+// 	return (
+// 		<div>
+// 			<h3>Speech Recognition (STT) & Text-to-Speech (TTS) Demo</h3>
+// 			<button onClick={startListening}>🎙 Start Speech Recognition</button>
+// 			<textarea
+// 				rows={5}
+// 				cols={40}
+// 				value={text}
+// 				onChange={(e) => setText(e.target.value)}
+// 				placeholder="Recognized or typed text"
+// 			/>
+// 			<br />
+// 			<button onClick={speak} disabled={!text.trim()}>
+// 				🔈 Speak Text (TTS)
+// 			</button>
+// 			<br />
+// 			<button onClick={testSpeechOutput}>🧪 Test TTS Output</button>
+// 		</div>
+// 	);
+// }

@@ -1,1 +1,39 @@
-{}
+{
+	"app": {
+		"title": "Tutor Linguistico AI",
+		"newChat": "Inizia Nuova Chat"
+	},
+	"form": {
+		"language": {
+			"polish": "Polacco",
+			"english": "Inglese",
+			"italian": "Italiano",
+			"french": "Francese",
+			"german": "Tedesco"
+		},
+		"level": {
+			"beginner": "Principiante",
+			"intermediate": "Intermedio",
+			"advanced": "Avanzato"
+		},
+		"subject": {
+			"orderMeal": "Ordinare un pasto al ristorante",
+			"openBankAccount": "Aprire un conto in banca",
+			"bookDoctorAppointment": "Prenotare un appuntamento dal medico",
+			"customTopic": "Aggiungi argomento personalizzato..."
+		},
+		"labels": {
+			"nativeLanguage": "La tua lingua madre:",
+			"languageToLearn": "Lingua da imparare:",
+			"chooseLevel": "Scegli il tuo livello:",
+			"chooseSubject": "Scegli un argomento:"
+		},
+		"buttons": {
+			"askAiTutor": "Chiedi al Tutor AI",
+			"generating": "Generazione in corso...",
+			"feedback": "Ricevi feedback",
+			"newChat": "Inizia Nuova Chat",
+			"send": "Invia"
+		}
+	}
+}

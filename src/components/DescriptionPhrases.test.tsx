@@ -45,7 +45,10 @@ describe("DescriptionPhrases", () => {
 		fireEvent.click(waiterButton);
 
 		await waitFor(() => {
-			expect(fetch).toHaveBeenCalledWith("/api/phrases", expect.any(Object));
+			expect(fetch).toHaveBeenCalledWith(
+				"/api/phrases",
+				expect.any(Object),
+			);
 			expect(setUserRoleMock).toHaveBeenCalledWith("waiter");
 			expect(setPhrasesMock).toHaveBeenCalledWith([
 				"Welcome!",

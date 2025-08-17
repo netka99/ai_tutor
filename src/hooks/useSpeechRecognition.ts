@@ -3,7 +3,7 @@ import { useSpeechStore } from "@/store/speechStore";
 import { useAppStore } from "@/store/useAppStore";
 
 export function useSpeechRecognition() {
-	const recognitionRef = useRef<any>(null);
+	const recognitionRef = useRef<SpeechRecognition | null>(null);
 	const setInputText = useSpeechStore((s) => s.setInputText);
 	const setUserInput = useAppStore((s) => s.setUserInput); // 👈 sync with app input
 	const { ttsLangCode } = useAppStore();
@@ -30,7 +30,30 @@ export function useSpeechRecognition() {
 		};
 
 		recognition.onerror = (event) => {
-			console.error("❌ STT error", event.error);
+			switch (event.error) {
+				case "no-speech":
+					console.log(
+						"🔊 No speech detected. Please try speaking again.",
+					);
+					// Automatically restart listening if no speech was detected
+					setTimeout(() => {
+						recognitionRef.current?.start();
+					}, 100);
+					break;
+				case "aborted":
+					console.log("🛑 Speech recognition was aborted");
+					break;
+				case "network":
+					console.error(
+						"❌ Network error occurred during speech recognition",
+					);
+					break;
+				case "not-allowed":
+					console.error("❌ Microphone permission was denied");
+					break;
+				default:
+					console.error("❌ STT error", event.error);
+			}
 		};
 
 		recognitionRef.current = recognition;

@@ -5,6 +5,7 @@ import { useAppStore } from "../store/useAppStore";
 import { useSpeechStore } from "../store/speechStore";
 import { STTButton } from "./STTButton";
 import { TTSButton } from "./TTSButton";
+import { useTranslations } from "next-intl";
 
 export default function ChatInterface() {
 	const {
@@ -24,6 +25,7 @@ export default function ChatInterface() {
 	} = useAppStore();
 	const { speakText, isAutoSpeak, toggleAutoSpeach } = useSpeechStore();
 	const sessionId = "demo-session-id";
+	const t = useTranslations("form");
 
 	useEffect(() => {
 		if (chatMessages.length === 0) return;
@@ -99,9 +101,13 @@ export default function ChatInterface() {
 									: "text-left text-green-800"
 							}`}
 						>
-							<strong>{msg.sender === "user" ? userRole : aiRole}</strong>:{" "}
-							{msg.text}
-							{msg.sender !== "user" && <TTSButton text={msg.text} />}{" "}
+							<strong>
+								{msg.sender === "user" ? userRole : aiRole}
+							</strong>
+							: {msg.text}
+							{msg.sender !== "user" && (
+								<TTSButton text={msg.text} />
+							)}{" "}
 						</div>
 					))}
 				<div className="mt-auto"></div>
@@ -119,13 +125,13 @@ export default function ChatInterface() {
 					onClick={sendMessageToTutor}
 					className="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
 				>
-					Send
+					{t("buttons.send")}
 				</button>
 			</div>
 			{sentenceCount >= 20 ? (
 				<div className="mt-2 rounded bg-yellow-100 p-2 text-sm text-yellow-800">
-					You&apos;ve written {sentenceCount} sentences. You can now request
-					feedback!
+					You&apos;ve written {sentenceCount} sentences. You can now
+					request feedback!
 				</div>
 			) : (
 				<div className="mb-4 rounded bg-green-100 p-2 text-sm text-yellow-800">

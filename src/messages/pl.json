@@ -1,1 +1,39 @@
-{}
+{
+	"app": {
+		"title": "AI Językowy Tutor",
+		"newChat": "Rozpocznij nowy czat"
+	},
+	"form": {
+		"language": {
+			"polish": "Polski",
+			"english": "Angielski",
+			"italian": "Włoski",
+			"french": "Francuski",
+			"german": "Niemiecki"
+		},
+		"level": {
+			"beginner": "Początkujący",
+			"intermediate": "Średniozaawansowany",
+			"advanced": "Zaawansowany"
+		},
+		"subject": {
+			"orderMeal": "Zamów posiłek w restauracji",
+			"openBankAccount": "Otwórz konto w banku",
+			"bookDoctorAppointment": "Umów wizytę u lekarza",
+			"customTopic": "Dodaj własny temat..."
+		},
+		"labels": {
+			"nativeLanguage": "Twój język ojczysty:",
+			"languageToLearn": "Język do nauki:",
+			"chooseLevel": "Wybierz swój poziom:",
+			"chooseSubject": "Wybierz temat:"
+		},
+		"buttons": {
+			"askAiTutor": "Zapytaj AI Tutora",
+			"generating": "Generowanie...",
+			"feedback": "Otrzymaj opinię",
+			"newChat": "Rozpocznij nowy czat",
+			"send": "Wyślij"
+		}
+	}
+}

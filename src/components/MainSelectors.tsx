@@ -2,7 +2,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { useAppStore } from "../store/useAppStore";
-import { languagesToLearn } from "../lib/formOptions";
+import {
+	languagesToLearn,
+	nativeLanguages,
+	levels,
+	subjects,
+} from "../lib/formOptions";
 import { useTranslations } from "next-intl";
 
 export default function MainSelectors() {
@@ -24,7 +29,7 @@ export default function MainSelectors() {
 		setAiRole,
 		roles,
 		setRoles,
-		ttsLangCode,
+		// ttsLangCode,
 		setTtsLangCode,
 	} = useAppStore();
 
@@ -78,7 +83,7 @@ export default function MainSelectors() {
 			<div className="flex justify-between">
 				<div>
 					<label htmlFor="nativeLang" className="mb-2 block">
-						Your Native Language:
+						{t("labels.nativeLanguage")}
 					</label>
 					<select
 						id="nativeLang"
@@ -87,14 +92,16 @@ export default function MainSelectors() {
 						onChange={(e) => setNativeLang(e.target.value)}
 						className="mb-6 rounded-lg bg-white p-6 shadow-lg"
 					>
-						<option value="polish">Polish</option>
-						<option value="english">English</option>
-						<option value="italian">Italian</option>
+						{nativeLanguages.map((option) => (
+							<option key={option.value} value={option.value}>
+								{t(`language.${option.value}`)}
+							</option>
+						))}
 					</select>
 				</div>
 				<div>
 					<label htmlFor="langToLearn" className="mb-2 block">
-						Language to learn:
+						{t("labels.languageToLearn")}
 					</label>
 					<select
 						id="langToLearn"
@@ -106,7 +113,7 @@ export default function MainSelectors() {
 						{languagesToLearn.map((option) => {
 							return (
 								<option key={option.value} value={option.value}>
-									{t(option.labelKey)}
+									{t(`language.${option.value}`)}
 								</option>
 							);
 						})}
@@ -114,7 +121,7 @@ export default function MainSelectors() {
 				</div>
 				<div>
 					<label htmlFor="level" className="mb-2 block">
-						Choose your level:
+						{t("labels.chooseLevel")}
 					</label>
 					<select
 						id="level"
@@ -123,16 +130,18 @@ export default function MainSelectors() {
 						onChange={(e) => setLevel(e.target.value)}
 						className="mb-6 rounded-lg bg-white p-6 shadow-lg"
 					>
-						<option value="beginner">Beginner</option>
-						<option value="intermediate">Intermediate</option>
-						<option value="advanced">Advanced</option>
+						{levels.map((option) => (
+							<option key={option.value} value={option.value}>
+								{t(`level.${option.value}`)}
+							</option>
+						))}
 					</select>
 				</div>
 			</div>
 			<div className="flex justify-between">
 				<div>
 					<label htmlFor="subject" className="mb-2 block">
-						Choose subject:
+						{t("labels.chooseSubject")}
 					</label>
 					<select
 						id="subject"
@@ -141,15 +150,11 @@ export default function MainSelectors() {
 						onChange={(e) => setSubject(e.target.value)}
 						className="mb-6 rounded-lg bg-white p-6 shadow-lg"
 					>
-						<option value="order a meal in the restaurant">
-							Order a meal in the resturant
-						</option>
-						<option value="open a bank account in the bank">
-							Open an account in a bank
-						</option>
-						<option value="book an appoinment to the doctor">
-							Book an appointment to the doctor
-						</option>
+						{subjects.map((option) => (
+							<option key={option.value} value={option.value}>
+								{t(`subject.${option.value}`)}
+							</option>
+						))}
 					</select>
 				</div>
 				<div className="flex w-96 items-center">
@@ -157,7 +162,7 @@ export default function MainSelectors() {
 						type="text"
 						value={customerSubject}
 						onChange={(e) => setCustomSubject(e.target.value)}
-						placeholder="Add custom topic..."
+						placeholder={t("subject.customTopic")}
 						className="w-96 rounded-md border border-gray-300 p-2 focus:border-blue-500 focus:ring-blue-500"
 						// onKeyPress={(e) =>
 						// 	e.key === "Enter" && handleCustomSubjectAdd()
@@ -170,7 +175,7 @@ export default function MainSelectors() {
 				className="rounded bg-blue-500 px-4 py-2 text-white"
 				disabled={isLoading}
 			>
-				{isLoading ? "Generating..." : "Ask AI Tutor"}
+				{isLoading ? t("buttons.generating") : t("buttons.askAiTutor")}
 			</button>
 		</form>
 	);

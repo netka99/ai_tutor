@@ -1,13 +1,39 @@
 {
+	"app": {
+		"title": "AI Language Tutor",
+		"newChat": "Start New Chat"
+	},
 	"form": {
-		"form": {
-			"language": {
-				"polish": "Polish",
-				"english": "English",
-				"italian": "Italian",
-				"french": "French",
-				"german": "German"
-			}
+		"language": {
+			"polish": "Polish",
+			"english": "English",
+			"italian": "Italian",
+			"french": "French",
+			"german": "German"
+		},
+		"level": {
+			"beginner": "Beginner",
+			"intermediate": "Intermediate",
+			"advanced": "Advanced"
+		},
+		"subject": {
+			"orderMeal": "Order a meal in the restaurant",
+			"openBankAccount": "Open an account in a bank",
+			"bookDoctorAppointment": "Book an appointment to the doctor",
+			"customTopic": "Add custom topic..."
+		},
+		"labels": {
+			"nativeLanguage": "Your Native Language:",
+			"languageToLearn": "Language to learn:",
+			"chooseLevel": "Choose your level:",
+			"chooseSubject": "Choose subject:"
+		},
+		"buttons": {
+			"askAiTutor": "Ask AI Tutor",
+			"generating": "Generating...",
+			"feedback": "Get Feedback",
+			"newChat": "Start New Chat",
+			"send": "Send"
 		}
 	}
 }

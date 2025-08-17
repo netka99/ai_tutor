@@ -66,7 +66,10 @@ describe("Feedback", () => {
 		fireEvent.click(getFeedbackButton);
 
 		await waitFor(() => {
-			expect(fetch).toHaveBeenCalledWith("/api/feedback", expect.any(Object));
+			expect(fetch).toHaveBeenCalledWith(
+				"/api/feedback",
+				expect.any(Object),
+			);
 			expect(setFeedbackMock).toHaveBeenCalledWith({
 				mistakes: [
 					{
@@ -76,7 +79,8 @@ describe("Feedback", () => {
 							"Brakuje przedimka 'a' przed rzeczownikiem 'menu'. Używamy 'a' gdy mówimy o czymś po raz pierwszy lub gdy nie jest to konkretny, sprecyzowany element.",
 					},
 				],
-				overallFeedback: "Ogólnie, twoje zdania są zrozumiałe i komunikatywne.",
+				overallFeedback:
+					"Ogólnie, twoje zdania są zrozumiałe i komunikatywne.",
 				topicsToReview: [
 					"Przedimki (a/an/the)",
 					"Szyk słów w pytaniach",

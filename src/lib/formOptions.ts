@@ -28,10 +28,10 @@ export const levels: SelectOption[] = [
 ];
 
 export const subjects: SelectOption[] = [
-	{ value: "order_meal", labelKey: "form.subject.orderMeal" },
-	{ value: "open_bank_account", labelKey: "form.subject.openBankAccount" },
+	{ value: "orderMeal", labelKey: "form.subject.orderMeal" },
+	{ value: "openBankAccount", labelKey: "form.subject.openBankAccount" },
 	{
-		value: "book_doctor_appointment",
+		value: "bookDoctorAppointment",
 		labelKey: "form.subject.bookDoctorAppointment",
 	},
 ];

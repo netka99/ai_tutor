@@ -1,1 +1,39 @@
-{}
+{
+	"app": {
+		"title": "Tuteur de Langue IA",
+		"newChat": "Démarrer une nouvelle conversation"
+	},
+	"form": {
+		"language": {
+			"polish": "Polonais",
+			"english": "Anglais",
+			"italian": "Italien",
+			"french": "Français",
+			"german": "Allemand"
+		},
+		"level": {
+			"beginner": "Débutant",
+			"intermediate": "Intermédiaire",
+			"advanced": "Avancé"
+		},
+		"subject": {
+			"orderMeal": "Commander un repas au restaurant",
+			"openBankAccount": "Ouvrir un compte en banque",
+			"bookDoctorAppointment": "Prendre rendez-vous chez le médecin",
+			"customTopic": "Ajouter un sujet personnalisé..."
+		},
+		"labels": {
+			"nativeLanguage": "Votre langue maternelle:",
+			"languageToLearn": "Langue à apprendre:",
+			"chooseLevel": "Choisissez votre niveau:",
+			"chooseSubject": "Choisissez un sujet:"
+		},
+		"buttons": {
+			"askAiTutor": "Demander au Tuteur IA",
+			"generating": "Génération en cours...",
+			"feedback": "Obtenir des commentaires",
+			"newChat": "Démarrer une nouvelle conversation",
+			"send": "Envoyer"
+		}
+	}
+}

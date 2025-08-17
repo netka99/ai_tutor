@@ -54,7 +54,12 @@ export default function DescriptionPhrases() {
 						key={i}
 						className="mx-7 rounded-lg border border-stone-100 bg-white px-4 py-2 font-medium text-blue-700 shadow-lg hover:bg-blue-50"
 						onClick={() =>
-							generatePhrases(role, description, langToLearn, level)
+							generatePhrases(
+								role,
+								description,
+								langToLearn,
+								level,
+							)
 						}
 					>
 						{role}

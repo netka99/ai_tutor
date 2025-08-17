@@ -1,9 +1,12 @@
 "use client";
 import React from "react";
 import { useAppStore } from "../store/useAppStore";
+import { useTranslations } from "next-intl";
 
 export default function Feedback() {
 	const sessionId = "demo-session-id";
+	const t = useTranslations("form");
+
 	const { level, langToLearn, nativeLang, feedback, setFeedback } =
 		useAppStore();
 
@@ -30,29 +33,38 @@ export default function Feedback() {
 			<div>
 				{feedback.mistakes.length > 0 && (
 					<div className="mt-4 rounded border bg-gray-100 p-4">
-						<h2 className="mb-2 text-lg font-bold">Grammar Feedback</h2>
+						<h2 className="mb-2 text-lg font-bold">
+							Grammar Feedback
+						</h2>
 
 						{feedback.mistakes.length > 0 ? (
 							<div>
-								<h3 className="mb-2 font-semibold">Mistakes:</h3>
+								<h3 className="mb-2 font-semibold">
+									Mistakes:
+								</h3>
 								<ul className="list-inside list-disc space-y-2">
 									{feedback.mistakes.map((m, idx) => (
 										<li key={idx}>
 											<p>
-												<strong>Original:</strong> {m.original}
+												<strong>Original:</strong>{" "}
+												{m.original}
 											</p>
 											<p>
-												<strong>Correction:</strong> {m.correction}
+												<strong>Correction:</strong>{" "}
+												{m.correction}
 											</p>
 											<p>
-												<strong>Explanation:</strong> {m.explanation}
+												<strong>Explanation:</strong>{" "}
+												{m.explanation}
 											</p>
 										</li>
 									))}
 								</ul>
 							</div>
 						) : (
-							<p className="text-green-700">No mistakes found. Well done!</p>
+							<p className="text-green-700">
+								No mistakes found. Well done!
+							</p>
 						)}
 
 						<div className="mt-4">
@@ -75,7 +87,7 @@ export default function Feedback() {
 				onClick={() => fetchFeedback(sessionId)}
 				className="mt-3 rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
 			>
-				Give me Feedback
+				{t("buttons.feedback")}
 			</button>
 		</div>
 	);

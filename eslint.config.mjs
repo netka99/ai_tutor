@@ -13,10 +13,10 @@ const eslintConfig = [
 	...compat.extends("next/core-web-vitals", "next/typescript"),
 	{
 		rules: {
-			"indent": ["error", "tab"], // Enforce tab indentation
+			indent: ["error", "tab", { "SwitchCase": 1 }], // Enforce tab indentation with proper switch case handling
 			"no-mixed-spaces-and-tabs": ["error", "smart-tabs"], // Prevent space-tab mix
 		},
-	}
+	},
 ];
 
 export default eslintConfig;

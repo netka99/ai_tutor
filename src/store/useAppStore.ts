@@ -73,7 +73,9 @@ export const useAppStore = create<AppState>()(
 		setLevel: (level) => set({ level }),
 		setPhrases: (phrases) => set({ phrases }),
 		addChatMessage: (message) =>
-			set((state) => ({ chatMessages: [...state.chatMessages, message] })),
+			set((state) => ({
+				chatMessages: [...state.chatMessages, message],
+			})),
 		setUserInput: (userInput) => set({ userInput }),
 		setFeedback: (feedback) => set({ feedback }),
 		setAiRole: (aiRole) => set({ aiRole }),

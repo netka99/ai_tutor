@@ -85,5 +85,6 @@ export const useSpeechStore = create<SpeechStore>((set, get) => ({
 	},
 
 	isAutoSpeak: true,
-	toggleAutoSpeach: () => set((state) => ({ isAutoSpeak: !state.isAutoSpeak })),
+	toggleAutoSpeach: () =>
+		set((state) => ({ isAutoSpeak: !state.isAutoSpeak })),
 }));

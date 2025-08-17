@@ -1,1 +1,39 @@
-{}
+{
+	"app": {
+		"title": "KI-Sprachtutor",
+		"newChat": "Neuen Chat starten"
+	},
+	"form": {
+		"language": {
+			"polish": "Polnisch",
+			"english": "Englisch",
+			"italian": "Italienisch",
+			"french": "Französisch",
+			"german": "Deutsch"
+		},
+		"level": {
+			"beginner": "Anfänger",
+			"intermediate": "Mittelstufe",
+			"advanced": "Fortgeschritten"
+		},
+		"subject": {
+			"orderMeal": "Eine Mahlzeit im Restaurant bestellen",
+			"openBankAccount": "Ein Bankkonto eröffnen",
+			"bookDoctorAppointment": "Einen Arzttermin vereinbaren",
+			"customTopic": "Eigenes Thema hinzufügen..."
+		},
+		"labels": {
+			"nativeLanguage": "Ihre Muttersprache:",
+			"languageToLearn": "Zu lernende Sprache:",
+			"chooseLevel": "Wählen Sie Ihr Niveau:",
+			"chooseSubject": "Wählen Sie ein Thema:"
+		},
+		"buttons": {
+			"askAiTutor": "KI-Tutor fragen",
+			"generating": "Wird generiert...",
+			"feedback": "Feedback erhalten",
+			"newChat": "Neuen Chat starten",
+			"send": "Senden"
+		}
+	}
+}

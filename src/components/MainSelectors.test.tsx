@@ -28,7 +28,10 @@ describe("MainSelectors", () => {
 		});
 
 		await act(async () => {
-			await userEvent.selectOptions(select, "book an appoinment to the doctor");
+			await userEvent.selectOptions(
+				select,
+				"book an appoinment to the doctor",
+			);
 		});
 
 		expect(select).toHaveValue("book an appoinment to the doctor");
