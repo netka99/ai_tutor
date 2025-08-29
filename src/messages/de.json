@@ -16,12 +16,6 @@
 			"intermediate": "Mittelstufe",
 			"advanced": "Fortgeschritten"
 		},
-		"subject": {
-			"orderMeal": "Eine Mahlzeit im Restaurant bestellen",
-			"openBankAccount": "Ein Bankkonto eröffnen",
-			"bookDoctorAppointment": "Einen Arzttermin vereinbaren",
-			"customTopic": "Eigenes Thema hinzufügen..."
-		},
 		"labels": {
 			"nativeLanguage": "Ihre Muttersprache:",
 			"languageToLearn": "Zu lernende Sprache:",
@@ -34,6 +28,69 @@
 			"feedback": "Feedback erhalten",
 			"newChat": "Neuen Chat starten",
 			"send": "Senden"
+		},
+		"subject": {
+			"orderMeal": "Eine Mahlzeit im Restaurant bestellen",
+			"reserveTable": "Einen Tisch im Restaurant reservieren",
+			"askFoodRecommendation": "Nach Essensempfehlungen fragen",
+			"orderTakeout": "Essen zum Mitnehmen bestellen",
+			"complainAboutFood": "Sich über eine Mahlzeit beschweren",
+
+			"bookHotelRoom": "Ein Hotelzimmer buchen",
+			"checkIntoHotel": "Im Hotel einchecken",
+			"requestRoomService": "Zimmerservice anfordern",
+			"reportHotelIssue": "Ein Problem im Hotel melden",
+			"extendHotelStay": "Einen Hotelaufenthalt verlängern",
+
+			"buyTrainTicket": "Eine Zugfahrkarte kaufen",
+			"takeTaxi": "Ein Taxi nehmen",
+			"rentCar": "Ein Auto mieten",
+			"askForDirections": "Nach dem Weg fragen",
+			"usePublicTransport": "Öffentliche Verkehrsmittel benutzen",
+
+			"buyClothes": "Kleidung kaufen",
+			"negotiatePrice": "Über einen Preis verhandeln",
+			"returnDefectiveItem": "Einen defekten Artikel zurückgeben",
+			"askProductInfo": "Nach Produktinformationen fragen",
+			"buySouvenirs": "Souvenirs kaufen",
+
+			"bookDoctorAppointment": "Einen Arzttermin vereinbaren",
+			"visitPharmacy": "Eine Apotheke besuchen",
+			"explainSymptoms": "Symptome einem Arzt erklären",
+			"dentistEmergency": "Einen zahnärztlichen Notfall bewältigen",
+			"buyHealthInsurance": "Eine Krankenversicherung abschließen",
+
+			"openBankAccount": "Ein Bankkonto eröffnen",
+			"exchangeCurrency": "Währung umtauschen",
+			"reportLostCard": "Eine verlorene Kreditkarte melden",
+			"withdrawMoney": "Geld von der Bank abheben",
+			"wireMoneyAbroad": "Geld ins Ausland überweisen",
+
+			"enrollLanguageCourse": "Sich für einen Sprachkurs anmelden",
+			"askForTranslation": "Um Übersetzungshilfe bitten",
+			"attendLibrary": "Eine Bibliothek besuchen",
+			"joinCulturalWorkshop": "An einem kulturellen Workshop teilnehmen",
+			"visitMuseum": "Ein Museum besuchen",
+
+			"jobInterview": "An einem Vorstellungsgespräch teilnehmen",
+			"requestTimeOff": "Urlaub beantragen",
+			"negotiateBusiness": "Ein Geschäft verhandeln",
+			"makeBusinessPresentation": "Eine Geschäftspräsentation halten",
+			"networkingEvent": "An einer Netzwerkveranstaltung teilnehmen",
+
+			"meetNewNeighbor": "Einen neuen Nachbarn kennenlernen",
+			"callPlumber": "Einen Klempner rufen",
+			"inviteToDinner": "Jemanden zum Abendessen einladen",
+			"planWeekendActivity": "Eine Wochenendaktivität planen",
+			"reportLostItem": "Einen verlorenen Gegenstand melden",
+
+			"callEmergencyServices": "Notdienste anrufen",
+			"reportTheft": "Einen Diebstahl melden",
+			"seekConsularHelp": "Hilfe beim Konsulat suchen",
+			"askForHelp": "Um Hilfe bitten",
+			"reportCarBreakdown": "Eine Autopanne melden",
+
+			"customTopic": "Eigenes Thema hinzufügen..."
 		}
 	}
 }

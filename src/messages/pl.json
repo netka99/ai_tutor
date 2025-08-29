@@ -16,12 +16,6 @@
 			"intermediate": "Średniozaawansowany",
 			"advanced": "Zaawansowany"
 		},
-		"subject": {
-			"orderMeal": "Zamów posiłek w restauracji",
-			"openBankAccount": "Otwórz konto w banku",
-			"bookDoctorAppointment": "Umów wizytę u lekarza",
-			"customTopic": "Dodaj własny temat..."
-		},
 		"labels": {
 			"nativeLanguage": "Twój język ojczysty:",
 			"languageToLearn": "Język do nauki:",
@@ -34,6 +28,69 @@
 			"feedback": "Otrzymaj opinię",
 			"newChat": "Rozpocznij nowy czat",
 			"send": "Wyślij"
+		},
+		"subject": {
+			"orderMeal": "Zamówić posiłek w restauracji",
+			"reserveTable": "Zarezerwować stolik w restauracji",
+			"askFoodRecommendation": "Poprosić o rekomendacje kulinarne",
+			"orderTakeout": "Zamówić jedzenie na wynos",
+			"complainAboutFood": "Złożyć reklamację dotyczącą posiłku",
+
+			"bookHotelRoom": "Zarezerwować pokój hotelowy",
+			"checkIntoHotel": "Zameldować się w hotelu",
+			"requestRoomService": "Zamówić obsługę pokoju",
+			"reportHotelIssue": "Zgłosić problem w hotelu",
+			"extendHotelStay": "Przedłużyć pobyt w hotelu",
+
+			"buyTrainTicket": "Kupić bilet na pociąg",
+			"takeTaxi": "Wziąć taksówkę",
+			"rentCar": "Wypożyczyć samochód",
+			"askForDirections": "Zapytać o drogę",
+			"usePublicTransport": "Korzystać z transportu publicznego",
+
+			"buyClothes": "Kupić ubrania",
+			"negotiatePrice": "Negocjować cenę",
+			"returnDefectiveItem": "Zwrócić wadliwy przedmiot",
+			"askProductInfo": "Poprosić o informacje o produkcie",
+			"buySouvenirs": "Kupić pamiątki",
+
+			"bookDoctorAppointment": "Umówić wizytę u lekarza",
+			"visitPharmacy": "Odwiedzić aptekę",
+			"explainSymptoms": "Wyjaśnić objawy lekarzowi",
+			"dentistEmergency": "Poradzić sobie z nagłym przypadkiem dentystycznym",
+			"buyHealthInsurance": "Kupić ubezpieczenie zdrowotne",
+
+			"openBankAccount": "Otworzyć konto bankowe",
+			"exchangeCurrency": "Wymienić walutę",
+			"reportLostCard": "Zgłosić zgubioną kartę kredytową",
+			"withdrawMoney": "Wypłacić pieniądze z banku",
+			"wireMoneyAbroad": "Przesłać pieniądze za granicę",
+
+			"enrollLanguageCourse": "Zapisać się na kurs językowy",
+			"askForTranslation": "Poprosić o pomoc w tłumaczeniu",
+			"attendLibrary": "Odwiedzić bibliotekę",
+			"joinCulturalWorkshop": "Dołączyć do warsztatów kulturalnych",
+			"visitMuseum": "Zwiedzić muzeum",
+
+			"jobInterview": "Uczestniczyć w rozmowie o pracę",
+			"requestTimeOff": "Poprosić o urlop",
+			"negotiateBusiness": "Negocjować umowę biznesową",
+			"makeBusinessPresentation": "Przygotować prezentację biznesową",
+			"networkingEvent": "Uczestniczyć w wydarzeniu networkingowym",
+
+			"meetNewNeighbor": "Poznać nowego sąsiada",
+			"callPlumber": "Wezwać hydraulika",
+			"inviteToDinner": "Zaprosić kogoś na kolację",
+			"planWeekendActivity": "Zaplanować aktywność weekendową",
+			"reportLostItem": "Zgłosić zgubiony przedmiot",
+
+			"callEmergencyServices": "Wezwać służby ratunkowe",
+			"reportTheft": "Zgłosić kradzież",
+			"seekConsularHelp": "Szukać pomocy w konsulacie",
+			"askForHelp": "Poprosić o pomoc",
+			"reportCarBreakdown": "Zgłosić awarię samochodu",
+
+			"customTopic": "Dodaj własny temat..."
 		}
 	}
 }

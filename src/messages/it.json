@@ -16,12 +16,6 @@
 			"intermediate": "Intermedio",
 			"advanced": "Avanzato"
 		},
-		"subject": {
-			"orderMeal": "Ordinare un pasto al ristorante",
-			"openBankAccount": "Aprire un conto in banca",
-			"bookDoctorAppointment": "Prenotare un appuntamento dal medico",
-			"customTopic": "Aggiungi argomento personalizzato..."
-		},
 		"labels": {
 			"nativeLanguage": "La tua lingua madre:",
 			"languageToLearn": "Lingua da imparare:",
@@ -34,6 +28,69 @@
 			"feedback": "Ricevi feedback",
 			"newChat": "Inizia Nuova Chat",
 			"send": "Invia"
+		},
+		"subject": {
+			"orderMeal": "Ordinare un pasto al ristorante",
+			"reserveTable": "Prenotare un tavolo al ristorante",
+			"askFoodRecommendation": "Chiedere consigli sul cibo",
+			"orderTakeout": "Ordinare cibo da asporto",
+			"complainAboutFood": "Lamentarsi di un pasto",
+
+			"bookHotelRoom": "Prenotare una camera d'albergo",
+			"checkIntoHotel": "Fare il check-in in hotel",
+			"requestRoomService": "Richiedere il servizio in camera",
+			"reportHotelIssue": "Segnalare un problema in hotel",
+			"extendHotelStay": "Prolungare il soggiorno in hotel",
+
+			"buyTrainTicket": "Comprare un biglietto del treno",
+			"takeTaxi": "Prendere un taxi",
+			"rentCar": "Noleggiare un'auto",
+			"askForDirections": "Chiedere indicazioni stradali",
+			"usePublicTransport": "Usare i mezzi pubblici",
+
+			"buyClothes": "Comprare vestiti",
+			"negotiatePrice": "Negoziare un prezzo",
+			"returnDefectiveItem": "Restituire un articolo difettoso",
+			"askProductInfo": "Chiedere informazioni su un prodotto",
+			"buySouvenirs": "Comprare souvenir",
+
+			"bookDoctorAppointment": "Prenotare una visita medica",
+			"visitPharmacy": "Visitare una farmacia",
+			"explainSymptoms": "Spiegare i sintomi a un medico",
+			"dentistEmergency": "Gestire un'emergenza dentistica",
+			"buyHealthInsurance": "Acquistare un'assicurazione sanitaria",
+
+			"openBankAccount": "Aprire un conto bancario",
+			"exchangeCurrency": "Cambiare valuta",
+			"reportLostCard": "Denunciare lo smarrimento di una carta di credito",
+			"withdrawMoney": "Prelevare denaro da una banca",
+			"wireMoneyAbroad": "Trasferire denaro all'estero",
+
+			"enrollLanguageCourse": "Iscriversi a un corso di lingua",
+			"askForTranslation": "Chiedere aiuto per una traduzione",
+			"attendLibrary": "Visitare una biblioteca",
+			"joinCulturalWorkshop": "Partecipare a un laboratorio culturale",
+			"visitMuseum": "Visitare un museo",
+
+			"jobInterview": "Partecipare a un colloquio di lavoro",
+			"requestTimeOff": "Richiedere un periodo di ferie",
+			"negotiateBusiness": "Negoziare un affare",
+			"makeBusinessPresentation": "Fare una presentazione aziendale",
+			"networkingEvent": "Partecipare a un evento di networking",
+
+			"meetNewNeighbor": "Conoscere un nuovo vicino",
+			"callPlumber": "Chiamare un idraulico",
+			"inviteToDinner": "Invitare qualcuno a cena",
+			"planWeekendActivity": "Pianificare un'attività per il weekend",
+			"reportLostItem": "Denunciare un oggetto smarrito",
+
+			"callEmergencyServices": "Chiamare i servizi di emergenza",
+			"reportTheft": "Denunciare un furto",
+			"seekConsularHelp": "Cercare aiuto presso un consolato",
+			"askForHelp": "Chiedere aiuto",
+			"reportCarBreakdown": "Segnalare un guasto all'auto",
+
+			"customTopic": "Aggiungi un argomento personalizzato..."
 		}
 	}
 }

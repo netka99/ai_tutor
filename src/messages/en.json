@@ -16,12 +16,6 @@
 			"intermediate": "Intermediate",
 			"advanced": "Advanced"
 		},
-		"subject": {
-			"orderMeal": "Order a meal in the restaurant",
-			"openBankAccount": "Open an account in a bank",
-			"bookDoctorAppointment": "Book an appointment to the doctor",
-			"customTopic": "Add custom topic..."
-		},
 		"labels": {
 			"nativeLanguage": "Your Native Language:",
 			"languageToLearn": "Language to learn:",
@@ -34,6 +28,69 @@
 			"feedback": "Get Feedback",
 			"newChat": "Start New Chat",
 			"send": "Send"
+		},
+		"subject": {
+			"orderMeal": "Order a meal in a restaurant",
+			"reserveTable": "Reserve a table at a restaurant",
+			"askFoodRecommendation": "Ask for food recommendations",
+			"orderTakeout": "Order takeout food",
+			"complainAboutFood": "Complain about a meal",
+
+			"bookHotelRoom": "Book a hotel room",
+			"checkIntoHotel": "Check into a hotel",
+			"requestRoomService": "Request room service",
+			"reportHotelIssue": "Report an issue at a hotel",
+			"extendHotelStay": "Extend a hotel stay",
+
+			"buyTrainTicket": "Buy a train ticket",
+			"takeTaxi": "Take a taxi",
+			"rentCar": "Rent a car",
+			"askForDirections": "Ask for directions",
+			"usePublicTransport": "Use public transportation",
+
+			"buyClothes": "Buy clothes",
+			"negotiatePrice": "Negotiate a price",
+			"returnDefectiveItem": "Return a defective item",
+			"askProductInfo": "Ask for product information",
+			"buySouvenirs": "Buy souvenirs",
+
+			"bookDoctorAppointment": "Book a doctor's appointment",
+			"visitPharmacy": "Visit a pharmacy",
+			"explainSymptoms": "Explain symptoms to a doctor",
+			"dentistEmergency": "Handle a dental emergency",
+			"buyHealthInsurance": "Buy health insurance",
+
+			"openBankAccount": "Open a bank account",
+			"exchangeCurrency": "Exchange currency",
+			"reportLostCard": "Report a lost credit card",
+			"withdrawMoney": "Withdraw money from a bank",
+			"wireMoneyAbroad": "Wire money abroad",
+
+			"enrollLanguageCourse": "Enroll in a language course",
+			"askForTranslation": "Ask for translation help",
+			"attendLibrary": "Visit a library",
+			"joinCulturalWorkshop": "Join a cultural workshop",
+			"visitMuseum": "Visit a museum",
+
+			"jobInterview": "Attend a job interview",
+			"requestTimeOff": "Request time off work",
+			"negotiateBusiness": "Negotiate a business deal",
+			"makeBusinessPresentation": "Make a business presentation",
+			"networkingEvent": "Attend a networking event",
+
+			"meetNewNeighbor": "Meet a new neighbor",
+			"callPlumber": "Call a plumber",
+			"inviteToDinner": "Invite someone to dinner",
+			"planWeekendActivity": "Plan a weekend activity",
+			"reportLostItem": "Report a lost item",
+
+			"callEmergencyServices": "Call emergency services",
+			"reportTheft": "Report a theft",
+			"seekConsularHelp": "Seek help from a consulate",
+			"askForHelp": "Ask for help",
+			"reportCarBreakdown": "Report a car breakdown",
+
+			"customTopic": "Add custom topic..."
 		}
 	}
 }

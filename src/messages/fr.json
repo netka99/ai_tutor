@@ -16,12 +16,6 @@
 			"intermediate": "Intermédiaire",
 			"advanced": "Avancé"
 		},
-		"subject": {
-			"orderMeal": "Commander un repas au restaurant",
-			"openBankAccount": "Ouvrir un compte en banque",
-			"bookDoctorAppointment": "Prendre rendez-vous chez le médecin",
-			"customTopic": "Ajouter un sujet personnalisé..."
-		},
 		"labels": {
 			"nativeLanguage": "Votre langue maternelle:",
 			"languageToLearn": "Langue à apprendre:",
@@ -34,6 +28,69 @@
 			"feedback": "Obtenir des commentaires",
 			"newChat": "Démarrer une nouvelle conversation",
 			"send": "Envoyer"
+		},
+		"subject": {
+			"orderMeal": "Commander un repas au restaurant",
+			"reserveTable": "Réserver une table au restaurant",
+			"askFoodRecommendation": "Demander des recommandations culinaires",
+			"orderTakeout": "Commander de la nourriture à emporter",
+			"complainAboutFood": "Se plaindre d'un repas",
+
+			"bookHotelRoom": "Réserver une chambre d'hôtel",
+			"checkIntoHotel": "S'enregistrer à l'hôtel",
+			"requestRoomService": "Demander le service d'étage",
+			"reportHotelIssue": "Signaler un problème à l'hôtel",
+			"extendHotelStay": "Prolonger un séjour à l'hôtel",
+
+			"buyTrainTicket": "Acheter un billet de train",
+			"takeTaxi": "Prendre un taxi",
+			"rentCar": "Louer une voiture",
+			"askForDirections": "Demander son chemin",
+			"usePublicTransport": "Utiliser les transports en commun",
+
+			"buyClothes": "Acheter des vêtements",
+			"negotiatePrice": "Négocier un prix",
+			"returnDefectiveItem": "Retourner un article défectueux",
+			"askProductInfo": "Demander des informations sur un produit",
+			"buySouvenirs": "Acheter des souvenirs",
+
+			"bookDoctorAppointment": "Prendre rendez-vous chez le médecin",
+			"visitPharmacy": "Visiter une pharmacie",
+			"explainSymptoms": "Expliquer des symptômes à un médecin",
+			"dentistEmergency": "Gérer une urgence dentaire",
+			"buyHealthInsurance": "Acheter une assurance santé",
+
+			"openBankAccount": "Ouvrir un compte bancaire",
+			"exchangeCurrency": "Échanger des devises",
+			"reportLostCard": "Signaler une carte de crédit perdue",
+			"withdrawMoney": "Retirer de l'argent à la banque",
+			"wireMoneyAbroad": "Transférer de l'argent à l'étranger",
+
+			"enrollLanguageCourse": "S'inscrire à un cours de langue",
+			"askForTranslation": "Demander de l'aide pour une traduction",
+			"attendLibrary": "Visiter une bibliothèque",
+			"joinCulturalWorkshop": "Participer à un atelier culturel",
+			"visitMuseum": "Visiter un musée",
+
+			"jobInterview": "Participer à un entretien d'embauche",
+			"requestTimeOff": "Demander un congé",
+			"negotiateBusiness": "Négocier une affaire",
+			"makeBusinessPresentation": "Faire une présentation professionnelle",
+			"networkingEvent": "Assister à un événement de réseautage",
+
+			"meetNewNeighbor": "Rencontrer un nouveau voisin",
+			"callPlumber": "Appeler un plombier",
+			"inviteToDinner": "Inviter quelqu'un à dîner",
+			"planWeekendActivity": "Planifier une activité de week-end",
+			"reportLostItem": "Signaler un objet perdu",
+
+			"callEmergencyServices": "Appeler les services d'urgence",
+			"reportTheft": "Signaler un vol",
+			"seekConsularHelp": "Chercher l'aide d'un consulat",
+			"askForHelp": "Demander de l'aide",
+			"reportCarBreakdown": "Signaler une panne de voiture",
+
+			"customTopic": "Ajouter un sujet personnalisé..."
 		}
 	}
 }

@@ -11,11 +11,12 @@ const model = new ChatGoogleGenerativeAI({
 
 const makeQuestion = async (
 	subject: string,
+	subjectDescription: string,
 	langToLearn: string,
 	level: string,
 ) => {
 	const prompt = PromptTemplate.fromTemplate(
-		`Given the subject "${subject}", generate a brief description of realistic 
+		`Given the subject "${subject}" with the detailed description: "${subjectDescription}", generate a brief description of realistic 
 		dialog scenario (1-2 sentences) in the language "${langToLearn}".
 		 Adjust the diffuculty of description to the "${level}" of studied language.
 		 Do not include any explanations, labels, or formatting.`,
@@ -43,7 +44,16 @@ export async function POST(req: Request) {
 			status: 400,
 		});
 	}
-	const question = await makeQuestion(subject, langToLearn, level);
+	const { subjects } = await import("@/lib/formOptions");
+	const subjectObj = subjects.find((s) => s.value === subject);
+	const subjectDescription = subjectObj?.description || "";
+
+	const question = await makeQuestion(
+		subject,
+		subjectDescription,
+		langToLearn,
+		level,
+	);
 	const answers = await makePossibileAnswers(question);
 	return Response.json({ description: question, roles: answers });
 }
