@@ -34,27 +34,33 @@ export default function Feedback() {
 				{feedback.mistakes.length > 0 && (
 					<div className="mt-4 rounded border bg-gray-100 p-4">
 						<h2 className="mb-2 text-lg font-bold">
-							Grammar Feedback
+							{t("feedback.title")}
 						</h2>
 
 						{feedback.mistakes.length > 0 ? (
 							<div>
 								<h3 className="mb-2 font-semibold">
-									Mistakes:
+									{t("feedback.mistakes")}:
 								</h3>
 								<ul className="list-inside list-disc space-y-2">
 									{feedback.mistakes.map((m, idx) => (
 										<li key={idx}>
 											<p>
-												<strong>Original:</strong>{" "}
+												<strong>
+													{t("feedback.original")}:
+												</strong>{" "}
 												{m.original}
 											</p>
 											<p>
-												<strong>Correction:</strong>{" "}
+												<strong>
+													{t("feedback.correction")}:
+												</strong>{" "}
 												{m.correction}
 											</p>
 											<p>
-												<strong>Explanation:</strong>{" "}
+												<strong>
+													{t("feedback.explanation")}:
+												</strong>{" "}
 												{m.explanation}
 											</p>
 										</li>
@@ -63,17 +69,21 @@ export default function Feedback() {
 							</div>
 						) : (
 							<p className="text-green-700">
-								No mistakes found. Well done!
+								{t("feedback.noMistakes")}
 							</p>
 						)}
 
 						<div className="mt-4">
-							<h3 className="font-semibold">Overall Feedback:</h3>
+							<h3 className="font-semibold">
+								{t("feedback.overall")}:
+							</h3>
 							<p>{feedback.overallFeedback}</p>
 						</div>
 
 						<div className="mt-4">
-							<h3 className="font-semibold">Topics to Review:</h3>
+							<h3 className="font-semibold">
+								{t("feedback.topics")}:
+							</h3>
 							<ul className="list-inside list-disc">
 								{feedback.topicsToReview.map((topic, idx) => (
 									<li key={idx}>{topic}</li>

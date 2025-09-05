@@ -29,6 +29,16 @@
 			"newChat": "Démarrer une nouvelle conversation",
 			"send": "Envoyer"
 		},
+		"feedback": {
+			"title": "Retour Grammatical",
+			"mistakes": "Erreurs",
+			"original": "Original",
+			"correction": "Correction",
+			"explanation": "Explication",
+			"overall": "Évaluation Générale",
+			"topics": "Sujets à Réviser",
+			"noMistakes": "Aucune erreur trouvée. Bien joué !"
+		},
 		"subject": {
 			"orderMeal": "Commander un repas au restaurant",
 			"reserveTable": "Réserver une table au restaurant",

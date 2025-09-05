@@ -58,7 +58,7 @@ export const useAppStore = create<AppState>()(
 		aiRole: "",
 		sentenceCount: 0,
 		roles: [],
-		ttsLangCode: "en-US",
+		ttsLangCode: "pl-PL",
 
 		feedback: {
 			mistakes: [],

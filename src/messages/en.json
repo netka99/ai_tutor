@@ -29,6 +29,20 @@
 			"newChat": "Start New Chat",
 			"send": "Send"
 		},
+		"chatInterface": {
+			"typeMsg": "Type your message...",
+			"counter": "Counter of your sentences"
+		},
+		"feedback": {
+			"title": "Grammar Feedback",
+			"mistakes": "Mistakes",
+			"original": "Original",
+			"correction": "Correction",
+			"explanation": "Explanation",
+			"overall": "Overall Feedback",
+			"topics": "Topics to Review",
+			"noMistakes": "No mistakes found. Well done!"
+		},
 		"subject": {
 			"orderMeal": "Order a meal in a restaurant",
 			"reserveTable": "Reserve a table at a restaurant",

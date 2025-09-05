@@ -29,6 +29,19 @@
 			"newChat": "Inizia Nuova Chat",
 			"send": "Invia"
 		},
+		"chatInterface": {
+			"typeMsg": "Type your message..."
+		},
+		"feedback": {
+			"title": "Feedback Grammaticale",
+			"mistakes": "Errori",
+			"original": "Originale",
+			"correction": "Correzione",
+			"explanation": "Spiegazione",
+			"overall": "Feedback Generale",
+			"topics": "Argomenti da Rivedere",
+			"noMistakes": "Nessun errore trovato. Ben fatto!"
+		},
 		"subject": {
 			"orderMeal": "Ordinare un pasto al ristorante",
 			"reserveTable": "Prenotare un tavolo al ristorante",

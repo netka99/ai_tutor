@@ -66,15 +66,19 @@ export default function MainSelectors() {
 
 	const handleLangtoChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		const selectedValue = e.target.value;
+		console.log("Selected language:", selectedValue);
 		setLangToLearn(selectedValue);
 
 		const selectedLangOption = languagesToLearn.find(
 			(lang) => lang.value === selectedValue,
 		);
+		console.log("Found language option:", selectedLangOption);
 
 		if (selectedLangOption?.ttsCode) {
+			console.log("Setting ttsLangCode to:", selectedLangOption.ttsCode);
 			setTtsLangCode(selectedLangOption.ttsCode);
 		} else {
+			console.log("No ttsCode found, defaulting to en-US");
 			setTtsLangCode("en-US");
 		}
 	};

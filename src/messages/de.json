@@ -29,6 +29,16 @@
 			"newChat": "Neuen Chat starten",
 			"send": "Senden"
 		},
+		"feedback": {
+			"title": "Grammatik-Feedback",
+			"mistakes": "Fehler",
+			"original": "Original",
+			"correction": "Korrektur",
+			"explanation": "Erklärung",
+			"overall": "Gesamtbewertung",
+			"topics": "Zu wiederholende Themen",
+			"noMistakes": "Keine Fehler gefunden. Gut gemacht!"
+		},
 		"subject": {
 			"orderMeal": "Eine Mahlzeit im Restaurant bestellen",
 			"reserveTable": "Einen Tisch im Restaurant reservieren",

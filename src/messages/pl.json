@@ -29,6 +29,16 @@
 			"newChat": "Rozpocznij nowy czat",
 			"send": "Wyślij"
 		},
+		"feedback": {
+			"title": "Informacja Zwrotna - Gramatyka",
+			"mistakes": "Błędy",
+			"original": "Oryginał",
+			"correction": "Poprawka",
+			"explanation": "Wyjaśnienie",
+			"overall": "Ogólna Ocena",
+			"topics": "Tematy do Powtórzenia",
+			"noMistakes": "Nie znaleziono błędów. Świetna robota!"
+		},
 		"subject": {
 			"orderMeal": "Zamówić posiłek w restauracji",
 			"reserveTable": "Zarezerwować stolik w restauracji",
